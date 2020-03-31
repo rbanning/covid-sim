@@ -1,0 +1,13 @@
+.health-status {
+  display: inline-block;
+  & > span {
+    display: inline-block;
+    padding: 0 0.25em;
+  }
+  .color {
+    width: 16px; height: 16px;
+  }
+  .text {
+    font-size: smaller;
+  }
+}

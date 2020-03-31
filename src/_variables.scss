@@ -1,0 +1,19 @@
+$color_set_white: ("full": #ffffff, "medium": rgba(255,255,255, 0.7), "light": rgba(255,255,255, 0.3));
+$color_set_black: ("full": #000000, "medium": rgba(0,0,0, 0.7), "light": rgba(0,0,0, 0.3));
+$color_set_gray: ("full": #87959b, "medium": #adbcc2, "light": #d9e2e6);
+$color_set_primary: ("full": rgb(255, 0, 179), "medium": rgba(255, 0, 179, 0.7), "light": rgba(255, 0, 179, 0.3));
+$color_set_accent: ("full": rgb(0, 162, 255), "medium": rgba(0, 162, 255, 0.7), "light": rgba(0, 162, 255, 0.3));
+
+
+$color_primary: map-get($color_set_primary, "full");
+$color_accent:  map-get($color_set_accent, "full");
+
+$color_link: $color_primary;
+
+$color_white: map-get($color_set_white, "full");
+$color_black: map-get($color_set_black, "full");
+$color_gray: map-get($color_set_gray, "full");
+
+
+$page_width: 900px;
+

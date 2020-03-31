@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./variables";
+@import "./mixins";
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  @include container($page_width);
+}
+
+.flex {
+  flex: 1;
+}
+
+a {
+  @include link($color_link);
+}

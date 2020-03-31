@@ -1,0 +1,47 @@
+@mixin block {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+@mixin container($max-width: 100%, $v-margin: 0, $h-margin: auto) {
+  @include block;
+  max-width: $max-width;
+  margin: $v-margin $h-margin;
+}
+
+@mixin link($color, $hover-color: $color) {
+  $timing: 0.2s;
+
+  display: inline-block;
+  color: $color;
+  text-decoration: none;
+  border-bottom: solid 2px transparent;
+  transition: color $timing ease-in-out;
+
+  &:hover {
+    color: $hover-color;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: $hover-color;
+    transform: translate(50%, 0);
+    transition: all $timing ease-in-out;
+  }
+
+  &:hover::after {
+      width: 100%;
+      transform: translate(0, -0.25em);
+  }
+
+  &.with-icon {
+    .mat-icon {
+      //move icons down a bit
+      transform: translateY(0.2em);
+    }
+  }
+
+}

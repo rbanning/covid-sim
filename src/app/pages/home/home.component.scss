@@ -1,0 +1,20 @@
+.population {
+  display: block;
+  padding: 1em;
+  border: solid 2px #ccc;
+  max-width: 400px;
+  width: 100%;
+}
+.person {
+  margin: 1em 0;
+  border-bottom: solid 1px #ccc;
+
+  .id { font-weight: bold; }
+}
+.assumptions {
+  display: block;
+  span {
+    display: block;
+    margin: 0.25em 0.5em;
+  }
+}

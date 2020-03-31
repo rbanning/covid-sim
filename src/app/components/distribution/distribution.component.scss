@@ -1,0 +1,23 @@
+.distribution {
+  & > span { padding: 0 0.25em; }
+  .label { color: #000; }
+  .mean { color: #000; }
+  .stdev { color: #999; }
+}
+.overbar {
+  display: inline-block;
+  text-decoration: overline;
+}
+.sym {
+  color: #ccc;
+  &:before {
+    content: '(';
+    padding-right: 0.2em;
+    text-decoration: none;
+  }
+  &:after {
+    content: ')';
+    padding-left: 0.2em;
+    text-decoration: none;
+  }
+}

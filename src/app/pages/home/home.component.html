@@ -1,0 +1,19 @@
+
+<h1>Population</h1>
+
+<h4>Assumptions</h4>
+<div class="assumptions">
+  <span>size: {{assumptions.initial.size}}</span>
+  <span>grid: {{assumptions.grid.horizontal}} &times; {{assumptions.grid.vertical}}  ( {{assumptions.initial.location}} )</span>
+  <span><app-distribution label="age" [distribution]="assumptions.initial.age"></app-distribution></span>
+  <span><app-distribution label="health" [distribution]="assumptions.initial.health"></app-distribution></span>
+  <span><app-distribution label="preexisting" [distribution]="assumptions.initial.preexisting"></app-distribution></span>
+</div>
+
+<div *ngIf="population$ | async as population">
+  <div class="person" *ngFor="let p of population">
+    <div class="id">{{p.id}}</div>
+    <div class="location">( {{p.location.x}}, {{p.location.y}} )</div>
+    <div class="health"><app-health [health]="p.currentHealth"></app-health></div>
+  </div>
+</div>

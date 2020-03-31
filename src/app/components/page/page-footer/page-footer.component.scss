@@ -1,0 +1,18 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+:host {
+  @include block;
+  margin: 3em 0 0 0;
+  padding: 1em 0;
+  background: map-get($color_set_gray, "light");
+  color: map-get($color_set_black, "medium");
+}
+
+footer {
+  @include container($page_width);
+
+  a {
+    @include link($color_gray);
+  }
+}

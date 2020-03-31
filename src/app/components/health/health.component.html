@@ -1,0 +1,8 @@
+<div class="health" *ngIf="health">
+  <app-health-status [status]="health.status"></app-health-status>
+  <span class="vitals">
+    <span title="age">{{health.age | number: '1.1-1'}} yrs</span>
+    <span title="health (out of 10)">{{health.health | number: '1.3-3'}} &#9825;</span>
+    <span title="pre-existing conditions (0: none, 10: max)">{{health.preexisting | number: '1.3-3'}} &#9741;</span>
+  </span>
+</div>

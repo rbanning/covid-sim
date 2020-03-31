@@ -1,0 +1,10 @@
+@import "../../../../variables";
+@import "../../../../mixins";
+
+.app-title {
+  font-weight: bold;
+}
+
+a {
+  @include link(map-get($color_set_white, "medium"), $color_white);
+}
