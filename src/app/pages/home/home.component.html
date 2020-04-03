@@ -26,15 +26,15 @@
 <table class="grid" *ngIf="grid$ | async as grid">
   <tbody>
     <tr *ngFor="let row of grid; let y = index">
-      <td *ngFor="let cell of row; let x = index">
-        <app-cell [people]="cell" [location]="location(x,y)" [size]="80"></app-cell>
+      <td *ngFor="let cell of row; let x = index" [class.selected]="isSelected(x,y)">
+        <app-cell
+          [people]="cell"
+          [location]="location(x,y)"
+          [size]="80"
+          (click)="view(location(x,y), cell)"
+          class="clickable"></app-cell>
       </td>
     </tr>
   </tbody>
 </table>
 
-<h3>Population</h3>
-
-<div *ngIf="population$ | async as population">
-  <app-person *ngFor="let p of population" [person]="p"></app-person>
-</div>

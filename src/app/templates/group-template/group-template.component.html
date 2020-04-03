@@ -1,0 +1,15 @@
+<h1 mat-dialog-title fxLayout="row" fxLayoutAlign="space-between">
+  <span>Location: ({{data.location.x}}, {{data.location.y}})</span>
+  <span>Found {{data.people.length}} {{data.people.length === 1 ? 'person' : 'people'}}</span>
+</h1>
+<div mat-dialog-content>
+  <div *ngIf="data.people.length > 0">
+    <app-person *ngFor="let p of data.people" [person]="p"></app-person>
+  </div>
+  <div *ngIf="data.people.length === 0" style="margin-bottom: 1em;">
+    <strong><em>- empty -</em></strong>
+  </div>
+</div>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="flex-end">
+  <button mat-button (click)="close()" cdkFocusInitial>Done</button>
+</div>

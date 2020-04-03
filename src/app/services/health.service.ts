@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { IPerson } from '@app/common/person';
 import { Range } from '@app/common/range';
 import { IHealthUpdate, Health, healthStatusEnum, knownHealthStatusEnum } from '@app/common/health';
-import * as utils from '@app/common/utilities';
 
 @Injectable()
 export class HealthService {
@@ -38,20 +37,19 @@ export class HealthService {
     if (condition.spores > p.currentHealth.spores) {
       condition.health = Math.min(
         condition.health,
-        Math.round(p.currentHealth.health -
+        p.currentHealth.health -
             this.calcSporeEffect(
                 p.currentHealth.spores,
                 condition.spores,
                 p.currentHealth.preexisting,
                 daysWithSpores)
-        )
       );
     }
 
     //adjust health based on immuneResponse
     if (condition.immuneResponse !== p.currentHealth.immuneResponse) {
       if (condition.immuneResponse > this.ranges.immuneResponse.upperQ) {
-        condition.health = Math.round(condition.health * (1 - condition.immuneResponse)/this.ranges.immuneResponse.max);
+        condition.health = condition.health * (1 - condition.immuneResponse)/this.ranges.immuneResponse.max;
       }
     }
 

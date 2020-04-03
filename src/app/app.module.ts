@@ -39,6 +39,8 @@ import { CovidIconComponent } from './components/icons/covid-icon/covid-icon.com
 import { PersonComponent } from './components/person/person.component';
 import { CollapsibleIconComponent } from './components/icons/collapsible-icon/collapsible-icon.component';
 import { CellComponent } from './components/cell/cell.component';
+import { GroupTemplateComponent } from './templates/group-template/group-template.component';
+import { RangeComponent } from './components/range/range.component';
 
 
 @NgModule({
@@ -55,7 +57,9 @@ import { CellComponent } from './components/cell/cell.component';
     CovidIconComponent,
     PersonComponent,
     CollapsibleIconComponent,
-    CellComponent
+    CellComponent,
+    GroupTemplateComponent,
+    RangeComponent
   ],
   imports: [
     BrowserModule,

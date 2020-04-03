@@ -1,0 +1,8 @@
+<span class="range" [style.background-image]="background" [style.width]="width + 'px'">
+  <span class="lower" *ngIf="lowerLabel && !note">{{lowerLabel}}</span>
+  <span class="upper" *ngIf="upperLabel && !note">{{upperLabel}}</span>
+  <span class="note" *ngIf="note">{{note}}</span>
+  <span class="value"
+    [title]="title"
+    [style.background]="color" [style.transform]="translate"></span>
+</span>

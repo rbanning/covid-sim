@@ -45,8 +45,8 @@ export class PopulationService {
     //randomly assign one person to have the virus
     this.healthService.infect(
         population[(Math.random() * population.length) | 0],
-        Math.ceil(Math.random() * this.healthService.ranges.spores.middle),
-        Math.ceil(Math.random() * this.healthService.ranges.immuneResponse.lowerQ)
+        Math.random() * this.healthService.ranges.spores.middle,
+        Math.random() * this.healthService.ranges.immuneResponse.lowerQ
     );
 
     console.log("createPopulation", {population});

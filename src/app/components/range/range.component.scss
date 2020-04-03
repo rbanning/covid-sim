@@ -1,0 +1,31 @@
+
+$size: 20px;
+$ball: $size + 5;
+
+:host {
+  display: inline-block;
+}
+
+.range {
+  position: relative;
+  display: inline-block;
+  height: $size;
+  border-radius: 6px;
+
+  .lower, .upper, .note, .value {
+    position: absolute;
+  }
+  .lower, .upper, .note {
+    bottom: 0;
+    transform: translateY($size - 1);
+    font-size: 0.7rem;
+  }
+  .lower, .note { left: 0; }
+  .upper { right: 0; }
+
+  .value {
+    display: inline-block;
+    width: $ball; height: $ball;
+    border-radius: 50%;
+  }
+}

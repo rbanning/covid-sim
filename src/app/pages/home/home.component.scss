@@ -26,6 +26,10 @@ table.grid {
   padding: 0;
   border-collapse: separate;
   border-spacing: 2px;
+  .selected > * {
+    border-color: black;
+    border-width: 2px;
+  }
 }
 
 .box {

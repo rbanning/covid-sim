@@ -6,16 +6,46 @@
     </mat-expansion-panel-header>
 
     <div class="details">
-      <h3>Details for <span class="id">{{person.id}}</span> </h3>
+      <h5>Details for <span class="id">{{person.id}}</span> </h5>
       <div class="key-value">
         <div class="key">Location</div>
         <div class="value">( {{person.location.x}}, {{person.location.y}} )</div>
       </div>
+      <div class="key-value">
+        <div class="key">Age</div>
+        <div class="value">{{person.health.age | number:'1.1-1'}} yrs.</div>
+      </div>
+      <div class="key-value range">
+        <div class="key">Health</div>
+        <div class="value">
+          <app-range [range]="ranges.health" [value]="person.health.health"></app-range>
+        </div>
+      </div>
+      <div class="key-value range">
+        <div class="key">Pre-existing Conditions</div>
+        <div class="value">
+          <app-range [range]="ranges.preexisting" [value]="person.health.preexisting" lowerLabel="best" upperLabel="worst"></app-range>
+        </div>
+      </div>
+      <div class="key-value range">
+        <div class="key">Spores</div>
+        <div class="value">
+          <app-range [range]="ranges.spores" [value]="person.health.spores" lowerLabel="best" upperLabel="worst"></app-range>
+        </div>
+      </div>
+      <div class="key-value range">
+        <div class="key">Immune Response</div>
+        <div class="value">
+          <app-range [range]="ranges.immuneResponse" [value]="person.health.immuneResponse" note="depends on level of spores, but too high is bad"></app-range>
+        </div>
+      </div>
+      <div class="key-value range">
+        <div class="key">Contagious</div>
+        <div class="value">
+          <app-range [range]="ranges.contagious" [value]="person.health.contagious" lowerLabel="best" upperLabel="worst"></app-range>
+        </div>
+      </div>
     </div>
-
-    <mat-action-row>
-      <button mat-button>Click me</button>
-    </mat-action-row>
   </mat-expansion-panel>
 
 </div>

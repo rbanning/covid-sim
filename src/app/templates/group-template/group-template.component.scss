@@ -1,0 +1,6 @@
+@import "../../../variables";
+
+.mat-dialog-actions {
+  border-top: solid 1px map-get($color_set_gray, light);
+  padding-top: 0.5em;
+}

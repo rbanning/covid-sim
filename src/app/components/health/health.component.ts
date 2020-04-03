@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IHealth } from 'src/app/common/health';
+import { HealthService } from '@app/services';
 
 @Component({
   selector: 'app-health',
@@ -10,7 +11,13 @@ export class HealthComponent implements OnInit {
   @Input()
   health: IHealth
 
-  constructor() { }
+  ranges: any;
+
+  constructor(
+    service: HealthService
+  ) {
+    this.ranges = service.ranges;
+   }
 
   ngOnInit(): void {
   }
