@@ -1,7 +1,19 @@
 
 <h1>Population</h1>
 
-<h4>Assumptions</h4>
+<div fxLayout="row" fxLayoutGap="2em">
+  <div class="box primary-full"></div>
+  <div class="box primary-medium"></div>
+  <div class="box primary-light"></div>
+</div>
+
+<div fxLayout="row" fxLayoutGap="2em">
+  <div class="box accent-full"></div>
+  <div class="box accent-medium"></div>
+  <div class="box accent-light"></div>
+</div>
+
+<h3>Assumptions</h3>
 <div class="assumptions">
   <span>size: {{assumptions.initial.size}}</span>
   <span>grid: {{assumptions.grid.horizontal}} &times; {{assumptions.grid.vertical}}  ( {{assumptions.initial.location}} )</span>
@@ -10,10 +22,19 @@
   <span><app-distribution label="preexisting" [distribution]="assumptions.initial.preexisting"></app-distribution></span>
 </div>
 
+<h3>Grid</h3>
+<table class="grid" *ngIf="grid$ | async as grid">
+  <tbody>
+    <tr *ngFor="let row of grid; let y = index">
+      <td *ngFor="let cell of row; let x = index">
+        <app-cell [people]="cell" [location]="location(x,y)" [size]="80"></app-cell>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Population</h3>
+
 <div *ngIf="population$ | async as population">
-  <div class="person" *ngFor="let p of population">
-    <div class="id">{{p.id}}</div>
-    <div class="location">( {{p.location.x}}, {{p.location.y}} )</div>
-    <div class="health"><app-health [health]="p.currentHealth"></app-health></div>
-  </div>
+  <app-person *ngFor="let p of population" [person]="p"></app-person>
 </div>

@@ -1,0 +1,9 @@
+<span class="box"
+    *ngFor="let p of people"
+    [style.width]="boxSizePX"
+    [style.height]="boxSizePX"
+    [style.background]="p.health.status.color"
+    [class.multiple]="people.length > 0"
+    >
+
+</span>

@@ -1,0 +1,27 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0,0,0, 0.01);
+  border: solid 1px map-get($color_set_gray, light);
+  overflow: hidden;
+
+  &.empty {
+    background-color: rgba(0,0,0, 0.02);
+  }
+}
+
+.box {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  &.multiple {
+    margin: 0.5px;
+  }
+}

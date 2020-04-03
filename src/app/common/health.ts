@@ -6,7 +6,7 @@ export interface IHealthStatus {
   text: string;
 }
 
-
+export type StatusEnumKey = "no_contact" | "contact_recovered" | "contact_no_symptoms" | "contact_mild_symptoms" | "contact_full_symptoms" | "contact_hospitalized" | "contact_critical" | "dead";
 export const healthStatusEnum: {[key: string]: IHealthStatus} = {
   no_contact: {code: "no_contact", text: 'No Contact', color: new ColorRgba('#FFF0E0')},
   contact_recovered: {code: "contact_recovered", text: "Recovered", color: new ColorRgba('#00B0B0')},
@@ -17,6 +17,9 @@ export const healthStatusEnum: {[key: string]: IHealthStatus} = {
   contact_critical: {code: "contact_critical", text: "Critical Condition", color: new ColorRgba('#FF0000')},
   dead: {code: "dead", text: "Dead", color: new ColorRgba('#000000')}
 };
+export const knownHealthStatusEnum = (key: StatusEnumKey): IHealthStatus => {
+  return healthStatusEnum[key];
+}
 
 export interface IHealthFactors {
   //health factors
@@ -34,6 +37,14 @@ export interface IHealth extends IHealthFactors {
 
   contagious: number;      //how contagious                 (0 = not contagious, 10 = highly contagious)
   isDead: boolean;
+}
+
+export interface IHealthUpdate {
+  age?: number;
+  health?: number;
+  spores: number;           //required
+  immuneResponse: number;   //required
+  contagious?: number;
 }
 
 

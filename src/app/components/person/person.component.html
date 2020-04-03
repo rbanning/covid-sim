@@ -1,0 +1,21 @@
+<div class="person" *ngIf="person">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <app-health [health]="person.health"></app-health>
+    </mat-expansion-panel-header>
+
+    <div class="details">
+      <h3>Details for <span class="id">{{person.id}}</span> </h3>
+      <div class="key-value">
+        <div class="key">Location</div>
+        <div class="value">( {{person.location.x}}, {{person.location.y}} )</div>
+      </div>
+    </div>
+
+    <mat-action-row>
+      <button mat-button>Click me</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+
+</div>

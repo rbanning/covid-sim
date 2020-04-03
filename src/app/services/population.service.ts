@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IPerson, Person } from '../common/person';
-import { IAssumptions, InitialDistributionType } from '../common/assumptions';
+import { IAssumptions } from '../common/assumptions';
 import { ILocation } from '../common/location';
 import { IHealth, Health, IHealthFactors, healthStatusEnum } from '../common/health';
 import { IGrid, Grid } from '../common/grid';
 import * as utils from '@app/common/utilities';
+import { HealthService } from './health.service';
 
 @Injectable()
 export class PopulationService {
   private populationSubject = new BehaviorSubject<IPerson[]>([]);
   population$ = this.populationSubject.asObservable();
-  grid: IGrid<IPerson>;
   assumptions: IAssumptions;
 
-  constructor() { }
+  private grid: IGrid<IPerson>;
+  private gridSubject = new BehaviorSubject<IPerson[][][]>(null);
+  grid$ = this.gridSubject.asObservable();
+
+  constructor(
+    private healthService: HealthService
+  ) { }
 
   initialize(assumptions: IAssumptions) {
     this.assumptions = assumptions;
@@ -24,13 +30,25 @@ export class PopulationService {
       assumptions.initial.location
     );
 
+    this.publish();
+  }
+
+  private publish() {
     this.populationSubject.next([...this.grid.population]);
+    this.gridSubject.next(this.grid.asTable());
   }
 
   private createPopulation(): IPerson[] {
     const population = utils.buildArray(this.assumptions.initial.size, _ => {
-      return this.createPerson();
+      return this.createPerson(); //no location, grid will handle update the locations during initalization
     });
+    //randomly assign one person to have the virus
+    this.healthService.infect(
+        population[(Math.random() * population.length) | 0],
+        Math.ceil(Math.random() * this.healthService.ranges.spores.middle),
+        Math.ceil(Math.random() * this.healthService.ranges.immuneResponse.lowerQ)
+    );
+
     console.log("createPopulation", {population});
     return population;
   }
@@ -55,10 +73,5 @@ export class PopulationService {
     return new Person(new Health(health), location);
   }
 
-  private randomLocation(): ILocation {
-    return {
-      x: Math.random() * this.assumptions.initial.size | 0,   // 0 <= x < size
-      y: Math.random() * this.assumptions.initial.size | 0    // 0 <= y < size
-    };
-  }
+
 }

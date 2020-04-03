@@ -17,8 +17,9 @@ export interface IGrid<T extends IHasLocation> {
   readonly def: IGridDefinition;
   population: T[];
 
+  asTable(): T[][][];
   cell(x: number, y: number): T[];
-  find(t: T): ILocation;
+  find(t: T, key: string): ILocation;
   move(t: T, steps: number): IGridMoveResult<T>;
 }
 
@@ -36,14 +37,26 @@ export class Grid<T extends IHasLocation> implements IGrid<T> {
     this.initialize(distribution);
   }
 
-  cell(x: number, y: number): T[] {
-    throw new Error("not implemented");
+  asTable(): T[][][] {
+    const ret = [];
+    for (let y = 0; y < this.def.vertical; y++) {
+      ret[y] = [];
+      for (let x = 0; x < this.def.vertical; x++) {
+        ret[y][x] = this.cell(x,y);
+      }
+    }
 
+    console.log("grid as table", ret);
+    return ret;
   }
 
-  find(t: T): ILocation {
-    throw new Error("not implemented");
+  cell(x: number, y: number): T[] {
+    return this.population.filter(p => p.location.x === x && p.location.y === y);
+  }
 
+  find(t: T, key: string = 'id'): ILocation {
+    const ret = this.population.find(p => p[key] === t[key]);
+    return !!ret ? ret.location : null;
   }
 
   move(t: T, steps: number): IGridMoveResult<T> {
@@ -59,9 +72,10 @@ export class Grid<T extends IHasLocation> implements IGrid<T> {
   }
 
   private randomLocation(): ILocation {
+    //using bitwise OR (|) to trucate the random value
     return {
-      x: (Math.random() * this.def.horizontal) & 0,
-      y: (Math.random() * this.def.vertical) & 0
+      x: (Math.random() * this.def.horizontal) | 0,
+      y: (Math.random() * this.def.vertical) | 0
     };
   }
   private serialLocation(from: ILocation = null): ILocation {

@@ -1,0 +1,25 @@
+@import "../../../variables";
+@import "../../../mixins";
+
+.person {
+  @include block;
+  margin: 1em 0;
+  padding-bottom: 0.5em;
+  border-bottom: solid 1px $color_gray;
+  overflow: hidden;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .summary {
+    @include block;
+
+  }
+
+  .details {
+    background: map-get($color_set_gray, "light");
+    border: solid 1px $color_gray;
+    padding: 0.25em;
+  }
+}

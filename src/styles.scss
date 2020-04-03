@@ -23,6 +23,32 @@ body {
   flex: 1;
 }
 
+.clickable { cursor: pointer; }
+
 a {
   @include link($color_link);
+}
+
+//key-value
+.key-value {
+  .key, .value {
+    display: inline-block;
+  }
+  .key {
+    font-weight: bold;
+    margin-right: 1em;
+    &::after {
+      content: ":";
+    }
+  }
+}
+
+
+//collapsible
+.collapsible {
+  @include block;
+  &.collapsed {
+    height: 0;
+    opacity: 0;
+  }
 }

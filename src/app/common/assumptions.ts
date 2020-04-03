@@ -22,7 +22,7 @@ const starterInitialPopulationAssumptions: IAssumptionsInitialPopulation = {
   age: new Distribution(38, 12),
   health: new Distribution(8, 0.5),
   preexisting: new Distribution(2, 0.5),
-  location: 'serial'
+  location: 'random'
 }
 
 export const starterAssumptions: IAssumptions = {

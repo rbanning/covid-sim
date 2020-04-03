@@ -1,8 +1,34 @@
+//material theme
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-pink);
+$app-accent: mat-palette($mat-blue);
+$app-warn: mat-palette($mat-purple);
+
+$app-gray: mat-palette($mat-blue-grey);
+$app-grey: $app-gray;
+
+@function color-map() {
+  @return(
+    primary: map-get($app-primary, default),
+    accent: map-get($app-accent, default),
+    warn: map-get($app-warn, default),
+    grey: map-get($app-grey, default),
+    ltgrey: map-get($app-grey, lighter),
+    dkgrey: map-get($app-grey, darker),
+    gray: map-get($app-gray, default),
+    ltgray: map-get($app-gray, lighter),
+    dkgray: map-get($app-gray, darker),
+  )
+}
+
+//general variables
 $color_set_white: ("full": #ffffff, "medium": rgba(255,255,255, 0.7), "light": rgba(255,255,255, 0.3));
 $color_set_black: ("full": #000000, "medium": rgba(0,0,0, 0.7), "light": rgba(0,0,0, 0.3));
-$color_set_gray: ("full": #87959b, "medium": #adbcc2, "light": #d9e2e6);
-$color_set_primary: ("full": rgb(255, 0, 179), "medium": rgba(255, 0, 179, 0.7), "light": rgba(255, 0, 179, 0.3));
-$color_set_accent: ("full": rgb(0, 162, 255), "medium": rgba(0, 162, 255, 0.7), "light": rgba(0, 162, 255, 0.3));
+$color_set_primary: ("full": map-get($app-primary, default), "medium": scale-color(map-get($app-primary, default), $lightness: 40%), "light": map-get($app-primary, lighter));
+$color_set_accent: ("full":map-get($app-accent, default), "medium": scale-color(map-get($app-accent, default), $lightness: 40%), "light": map-get($app-accent, lighter));
+$color_set_gray: ("full":map-get($app-gray, default), "medium": scale-color(map-get($app-gray, default), $lightness: 40%), "light": map-get($app-gray, lighter));
+$color_set_grey: $color_set_gray;
 
 
 $color_primary: map-get($color_set_primary, "full");
@@ -13,7 +39,7 @@ $color_link: $color_primary;
 $color_white: map-get($color_set_white, "full");
 $color_black: map-get($color_set_black, "full");
 $color_gray: map-get($color_set_gray, "full");
+$color_grey: map-get($color_set_gray, "full");
 
 
 $page_width: 900px;
-

@@ -1,3 +1,5 @@
+@import "../../../variables";
+
 .population {
   display: block;
   padding: 1em;
@@ -17,4 +19,21 @@
     display: block;
     margin: 0.25em 0.5em;
   }
+}
+
+table.grid {
+  margin: 1em 0;
+  padding: 0;
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+
+.box {
+  width: 20px; height: 20px;
+  &.primary-full { background-color: map-get($color_set_primary, full); }
+  &.primary-medium { background-color: map-get($color_set_primary, medium); }
+  &.primary-light { background-color: map-get($color_set_primary, light); }
+  &.accent-full { background-color: map-get($color_set_accent, full); }
+  &.accent-medium { background-color: map-get($color_set_accent, medium); }
+  &.accent-light { background-color: map-get($color_set_accent, light); }
 }

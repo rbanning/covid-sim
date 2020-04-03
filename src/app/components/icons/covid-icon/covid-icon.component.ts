@@ -19,7 +19,6 @@ export class CovidIconComponent implements OnInit {
     const size = this.parseSize(this.size);
     this.width = size;
     this.height = size;
-    console.log("app-covid-icon", {size: this.size, calcSize: size, width: this.width, height: this.height});
   }
 
   private parseSize(value: string): string {

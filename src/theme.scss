@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import './variables';
+
+@include mat-core();
+
+//$app-primary: defined in _variables
+//$app-accent: defined in _variables
+//$app-warn: defined in _variables
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($app-theme);
+
+.mat-button, .mat-mini-fab, .mat-icon-button {
+  &.cdk-focused,
+  &.cdk-program-focused {
+    .mat-button-focus-overlay {
+      display: none;
+    }
+  }
+}

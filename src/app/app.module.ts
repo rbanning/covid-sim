@@ -9,6 +9,8 @@ import { MatListModule } from "@angular/material/list";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
 
 const materialModules = [
@@ -17,6 +19,8 @@ const materialModules = [
   MatDialogModule,
   MatMenuModule,
   MatSidenavModule,
+  MatExpansionModule,
+  MatButtonModule,
   MatIconModule
 ];
 
@@ -32,6 +36,9 @@ import { PageHeaderComponent } from './components/page/page-header/page-header.c
 import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 import { PageLayoutComponent } from './components/page/page-layout/page-layout.component';
 import { CovidIconComponent } from './components/icons/covid-icon/covid-icon.component';
+import { PersonComponent } from './components/person/person.component';
+import { CollapsibleIconComponent } from './components/icons/collapsible-icon/collapsible-icon.component';
+import { CellComponent } from './components/cell/cell.component';
 
 
 @NgModule({
@@ -45,7 +52,10 @@ import { CovidIconComponent } from './components/icons/covid-icon/covid-icon.com
     PageHeaderComponent,
     PageFooterComponent,
     PageLayoutComponent,
-    CovidIconComponent
+    CovidIconComponent,
+    PersonComponent,
+    CollapsibleIconComponent,
+    CellComponent
   ],
   imports: [
     BrowserModule,

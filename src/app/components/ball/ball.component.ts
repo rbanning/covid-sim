@@ -26,7 +26,6 @@ export class BallComponent implements OnInit, OnChanges {
   changeColor() {
     const alpha = this.fill.alpha - 0.1;
     this.fill.alpha = (alpha > 0.01) ? alpha : 1;
-    console.log("Changed color", {alpha, fill: this.fill});
   }
 
   private parseColor(color: string) {

@@ -1,5 +1,5 @@
 import { ILocation, IHasLocation } from './location';
-import { IHealth } from './health';
+import { IHealth, IHealthUpdate, Health } from './health';
 import { GUID } from './guid';
 
 export interface IPerson extends IHasLocation {
@@ -7,7 +7,10 @@ export interface IPerson extends IHasLocation {
   //location: ILocation;  (from IHasLocation)
   history: IHealth[];
   readonly currentHealth: IHealth;
+  readonly health: IHealth; //alias of currentHealth
   readonly initialHealth: IHealth;
+  updateHealth(h: IHealth): IPerson;
+  numberOfContinuousDaysWithSpores(minSporeCount: number): number;
 }
 
 export class Person implements IPerson {
@@ -21,6 +24,10 @@ export class Person implements IPerson {
     //else
     console.warn("Cannot access person's current health", {person: this});
     return null;
+  }
+  get health(): IHealth {
+    //alias
+    return this.currentHealth;
   }
   get initialHealth(): IHealth {
     if (Array.isArray(this.history) && this.history.length > 0) {
@@ -36,4 +43,31 @@ export class Person implements IPerson {
     this.history = [health];
     this.location = location;
   }
+
+  updateHealth(update: IHealth | IHealthUpdate): IPerson {
+    const condition = new Health({
+      ...this.currentHealth,
+      ...update
+    });
+    //adjust
+    condition.isDead = condition.health <= 0;
+
+    //set
+    this.history.push(condition);
+    return this;
+  }
+
+  numberOfContinuousDaysWithSpores(minSporeCount: number): number {
+    let count = 0;
+    let hasSpores = true; //flag
+    for (let i = this.history.length - 1; i > 0 && hasSpores; i--) {
+      if (this.history[i].spores >= minSporeCount) {
+        count++;
+      } else {
+        hasSpores = false;
+      }
+    }
+    return count;
+  }
+
 }
