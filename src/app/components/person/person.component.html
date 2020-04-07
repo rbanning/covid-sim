@@ -1,0 +1,14 @@
+<div class="person" [attr.data-ref]="person.id">
+  <div class="summary clickable" (click)="isCollapsed = !isCollapsed">
+    <mat-icon *ngIf="isCollapsed">arrow_right</mat-icon>
+    <mat-icon *ngIf="!isCollapsed">arrow_drop_down</mat-icon>
+    <app-health [health]="person.currentHealth"></app-health>
+  </div>
+  <div class="details" [class.collapsed]="isCollapsed">
+    <h3>Details for {{person.id}}</h3>
+    <div class="detail">
+      <span class="label">Location</span>
+      <span class="value">( {{person.location.x}}, {{person.location.y}} )</span>
+    </div>
+  </div>
+</div>

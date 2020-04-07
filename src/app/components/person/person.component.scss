@@ -1,0 +1,22 @@
+.person {
+  margin: 1em 0;
+  padding-bottom: 0.5em;
+  border-bottom: solid 1px red;
+  overflow: hidden;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .summary {
+    display: flex;
+    & > * {
+      margin-right: 0.5em;
+    }
+  }
+  .details {
+    &.collapsed {
+      height: 0;
+    }
+  }
+}

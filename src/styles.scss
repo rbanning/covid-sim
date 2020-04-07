@@ -23,6 +23,8 @@ body {
   flex: 1;
 }
 
+.clickable { cursor: pointer; }
+
 a {
   @include link($color_link);
 }

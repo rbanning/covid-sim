@@ -11,9 +11,5 @@
 </div>
 
 <div *ngIf="population$ | async as population">
-  <div class="person" *ngFor="let p of population">
-    <div class="id">{{p.id}}</div>
-    <div class="location">( {{p.location.x}}, {{p.location.y}} )</div>
-    <div class="health"><app-health [health]="p.currentHealth"></app-health></div>
-  </div>
+  <app-person [person]="p" *ngFor="let p of population"></app-person>
 </div>

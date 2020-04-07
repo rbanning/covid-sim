@@ -31,6 +31,8 @@ import { DistributionComponent } from './components/distribution/distribution.co
 import { PageHeaderComponent } from './components/page/page-header/page-header.component';
 import { PageFooterComponent } from './components/page/page-footer/page-footer.component';
 import { PageLayoutComponent } from './components/page/page-layout/page-layout.component';
+import { CoronaIconComponent } from './components/icons/corona-icon/corona-icon.component';
+import { PersonComponent } from './components/person/person.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { PageLayoutComponent } from './components/page/page-layout/page-layout.c
     DistributionComponent,
     PageHeaderComponent,
     PageFooterComponent,
-    PageLayoutComponent
+    PageLayoutComponent,
+    CoronaIconComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
